@@ -1,0 +1,31 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^t.d-vantage.com [NC]
+RewriteRule ^(.*)$ https://telegram.doctor/$1 [L,R=301,NC]
+
+AddType text/css .css
+AddType text/xml .xml
+
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf)$">
+  Header set Cache-Control "max-age=3600"
+</FilesMatch>
+
+<ifModule mod_expires.c>
+    ExpiresActive On
+    #по умолчанию кеш в 5 секунд
+    ExpiresDefault "access plus 5 seconds"
+    #кэшировать флэш и изображения на месяц
+    ExpiresByType image/x-icon "access plus 2592000 seconds"
+    ExpiresByType image/jpeg "access plus 2592000 seconds"
+    ExpiresByType image/png "access plus 2592000 seconds"
+    ExpiresByType image/gif "access plus 2592000 seconds"
+    ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+    #кэшировать css, javascript и текстовые файлы на одну неделю
+    ExpiresByType text/css "access plus 3600 seconds"
+    ExpiresByType text/javascript "access plus 3600 seconds"
+    ExpiresByType application/javascript "access plus 3600 seconds"
+    ExpiresByType application/x-javascript "access plus 3600 seconds"
+    #кэшировать html и htm файлы на один день
+    #ExpiresByType text/html "access plus 3600 seconds"
+    #кэшировать xml файлы на десять минут
+    #ExpiresByType application/xhtml+xml "access plus 600 seconds"
+</ifModule>
