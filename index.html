@@ -1,135 +1,144 @@
 !DOCTYPE HTML>
 <html>
 <head>
-<title>Telegram Doctor</title>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta property="al:ios:app_store_id" content="686449807">
-<meta property="al:ios:app_name" content="Telegram Messenger">
-<meta property="al:ios:url"
-	content="tg://socks?server=s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">
+    <title>Telegram Doctor</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta property="al:ios:app_store_id" content="686449807">
+    <meta property="al:ios:app_name" content="Telegram Messenger">
+    <meta property="al:ios:url"
+          content="tg://socks?server=s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">
 
-<meta property="al:android:url"
-	content="tg://socks?server=s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">
-<meta property="al:android:app_name" content="Telegram">
-<meta property="al:android:package" content="org.telegram.messenger">
-<meta name="apple-itunes-app"
-	content="app-id=686449807, app-argument: tg://socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass">
-<meta property="og:title" content="Telegram doctor" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://telegram.doctor" />
-<meta property="og:image"
-	content="https://telegram.doctor/cross_min.png" />
-<meta property="og:site_name" content="Telegram doctor" />
-<meta property="og:description" content="High speed proxy for Telegram" />
-<link rel="stylesheet" href="assets/css/main.css" />
+    <meta property="al:android:url"
+          content="tg://socks?server=s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">
+    <meta property="al:android:app_name" content="Telegram">
+    <meta property="al:android:package" content="org.telegram.messenger">
+    <meta name="apple-itunes-app"
+          content="app-id=686449807, app-argument: tg://socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass">
+    <meta property="og:title" content="Telegram doctor"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://telegram.doctor"/>
+    <meta property="og:image"
+          content="https://telegram.doctor/cross_min.png"/>
+    <meta property="og:site_name" content="Telegram doctor"/>
+    <meta property="og:description" content="High speed proxy for Telegram"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
 
- <link rel="shortcut icon" href="/favicon.ico">
-<link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
 
-<noscript>
-	<link rel="stylesheet" href="/assets/css/noscript.css" />
-</noscript>
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/noscript.css"/>
+    </noscript>
 </head>
 <body class="is-preload">
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+<!-- Wrapper -->
+<div id="wrapper">
 
-		<!-- Main -->
-		<section id="main">
-			<header>
-				<span class="avatar"><img src="plane.png" alt="" /></span>
-				<h1>Telegram doctor</h1>
+    <!-- Main -->
+    <section id="main">
+        <header>
+            <span class="avatar"><img src="plane.png" alt=""/></span>
+            <h1>Telegram doctor</h1>
 
-			</header>
+        </header>
 
-			<footer>
-
-
-<p>A native app for every platform</p>
-<ul class="icons download">
-					<li><a target="_blank" href="https://web.telegram.doctor">Telegram Web</a></li>
-					<li><a target="_blank" href="https://download.telegram.doctor/files/tsetup.1.7.0.exe">Download for Windows</a></li>
-					<li><a target="_blank" href="https://download.telegram.doctor/files/tsetup.1.7.0.tar.xz">Download for Linux</a></li>
-				</ul>
-
-<p>High speeed proxy</p>
-
-				<ul class="icons proxy">
-					<li><a href="tg://socks?server=s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">SOCKS5</a></li>
-					<li><a href="tg://socks?server=ip6s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">SOCKS5
-							IPv6</a></li>
-					<li><a href="tg://proxy?server=mtps1.telegram.doctor&amp;port=443&amp;secret=0a9ea08341d6772b4a122987ef042b86">MTPROTO</a></li>
-				</ul>
-				<div class="ping">
-					latency - <span>47ms</span>
-				</div>
-			</footer>
-		</section>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="copyright">
-				<li>&copy; Vladimir Dorogov</li>
-			</ul>
-		</footer>
-
-	</div>
-
-	<!-- Scripts -->
-	<script type="text/javascript" src="/js/socket.io.js"></script>
-	<script>
-				if ('addEventListener' in window) {
-
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-
-				window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-			    /**
-			    *
-			    * @param callback
-			    */
-			   const documentReady = callback => {
-			       if (document.readyState != 'loading') callback();
-			       else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
-			   }
-
-			   documentReady(function () {
+        <footer>
 
 
-				   var socket = io.connect( 'proxylatency.d-vantage.com:3000', {
-					   secure: true,
-					   reconnect: true
-					   //rejectUnauthorized : false
-					   }
-				   );
+            <p>A native app for every platform</p>
+            <ul class="icons download">
+                <li><a target="_blank" href="https://web.telegram.doctor">Telegram Web</a></li>
+                <li><a target="_blank" href="https://download.telegram.doctor/files/tsetup.1.7.0.exe">Download for
+                    Windows</a></li>
+                <li><a target="_blank" href="https://download.telegram.doctor/files/tsetup.1.7.0.tar.xz">Download for
+                    Linux</a></li>
+            </ul>
 
-				    setInterval(function() {
-				    	    socket.emit('latency', Date.now(), function(startTime) {
-				    	        var latency = Date.now() - startTime;
-				    	        console.log(latency);
+            <p>High speeed proxy</p>
+
+            <ul class="icons proxy">
+                <li>
+                    <a href="tg://socks?server=s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">SOCKS5</a>
+                </li>
+                <li>
+                    <a href="tg://socks?server=ip6s1.telegram.doctor&amp;port=1080&amp;user=telegramproxy&amp;pass=telegrampass">SOCKS5
+                        IPv6</a></li>
+                <li>
+                    <a href="tg://proxy?server=mtps1.telegram.doctor&amp;port=443&amp;secret=0a9ea08341d6772b4a122987ef042b86">MTPROTO</a>
+                </li>
+            </ul>
+            <div class="ping">
+                latency - <span>47ms</span>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="copyright">
+            <li>&copy; Vladimir Dorogov</li>
+        </ul>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script type="text/javascript" src="/js/socket.io.js"></script>
+<script>
+    if ('addEventListener' in window) {
+
+        document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+    }
+
+    window.addEventListener('load', function () {
+        document.body.className = document.body.className.replace(/\bis-preload\b/, '');
+    });
+    /**
+     *
+     * @param callback
+     */
+    const documentReady = callback => {
+        if (document.readyState != 'loading') callback();
+        else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+    }
+
+    documentReady(function () {
 
 
-				    	        let pingBlock = document.querySelector('.ping span');
+        var socket = io.connect('proxylatency.d-vantage.com:3000', {
+                secure: true,
+                reconnect: true
+                //rejectUnauthorized : false
+            }
+        );
 
-				    	        pingBlock.innerHTML = latency+'ms';
-
-				    	    });
-
-				    	}, 1000);
-
-				});
+        setInterval(function () {
+            socket.emit('latency', Date.now(), function (startTime) {
+                var latency = Date.now() - startTime;
+                console.log(latency);
 
 
-		        var protoUrlOld = "tg:\/\/socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass";
-		        var protoUrl = "tg://proxy?server=mtps1.telegram.doctor&port=443&secret=0a9ea08341d6772b4a122987ef042b86";
+                let pingBlock = document.querySelector('.ping span');
 
-		        setTimeout(function () {
-		            window.location = protoUrlOld;
-		        }, 1000);
-			</script>
+                pingBlock.innerHTML = latency + 'ms';
+
+            });
+
+        }, 1000);
+
+    });
+
+
+    var protoUrlOld = "tg:\/\/socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass";
+    var protoUrl    = "tg://proxy?server=mtps1.telegram.doctor&port=443&secret=0a9ea08341d6772b4a122987ef042b86";
+
+    setTimeout(function () {
+        window.location = protoUrlOld;
+    }, 1000);
+</script>
 
 </body>
 </html>
