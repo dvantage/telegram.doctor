@@ -89,25 +89,35 @@
 <!-- Scripts -->
 <script type="text/javascript" src="/js/socket.io.js"></script>
 <script>
-    if ('addEventListener' in window) {
 
+    const backgroundPath = '/images/doctor.jpg';
+    const protoUrl       = 'tg://proxy?server=mtps1.telegram.doctor&port=443&secret=0a9ea08341d6772b4a122987ef042b86';
+    const socksUrl       = 'tg://socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass';
+    const latencyUrl     = 'proxylatency.d-vantage.com:3000';
+
+    if ('addEventListener' in window) {
         document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
     }
 
-    window.addEventListener('load', function () {
-        document.body.className = document.body.className.replace(/\bis-preload\b/, '');
-    });
-    /**
-     *
-     * @param callback
-     */
+    const checkImage = (path) =>
+        new Promise((resolve) => {
+            const img   = new Image();
+            img.onload  = () => resolve({path, status: 'ok'});
+            img.onerror = () => resolve({path, status: 'error'});
+
+            img.src = path;
+        });
+
+
+    const loadImg = (...paths) => Promise.all(paths.map(checkImage));
+
     const documentReady = callback => {
         if (document.readyState !== 'loading') callback();
         else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
     };
 
     documentReady(function () {
-        const socket = io.connect('proxylatency.d-vantage.com:3000', {
+        const socket = io.connect(latencyUrl, {
                 secure: true,
                 reconnect: true
                 //rejectUnauthorized : false
@@ -122,10 +132,11 @@
             });
 
         }, 1000);
-    });
 
-    const protoUrl = "tg://proxy?server=mtps1.telegram.doctor&port=443&secret=0a9ea08341d6772b4a122987ef042b86";
-    const socksUrl = "tg://socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass";
+        loadImg([backgroundPath]).then(() => {
+            document.body.className = document.body.className.replace(/\bis-preload\b/, '');
+        });
+    });
 
     setTimeout(function () {
         window.location = socksUrl;
