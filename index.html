@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en-us">
 <head>
     <title>Telegram Doctor</title>
     <meta charset="utf-8"/>
@@ -102,42 +102,33 @@
      * @param callback
      */
     const documentReady = callback => {
-        if (document.readyState != 'loading') callback();
+        if (document.readyState !== 'loading') callback();
         else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
-    }
+    };
 
     documentReady(function () {
-
-
-        var socket = io.connect('proxylatency.d-vantage.com:3000', {
+        const socket = io.connect('proxylatency.d-vantage.com:3000', {
                 secure: true,
                 reconnect: true
                 //rejectUnauthorized : false
             }
         );
-
         setInterval(function () {
             socket.emit('latency', Date.now(), function (startTime) {
-                var latency = Date.now() - startTime;
-                console.log(latency);
-
-
-                let pingBlock = document.querySelector('.ping span');
-
+                const latency       = Date.now() - startTime;
+                // console.log(latency);
+                const pingBlock     = document.querySelector('.ping span');
                 pingBlock.innerHTML = latency + 'ms';
-
             });
 
         }, 1000);
-
     });
 
-
-    var protoUrlOld = "tg:\/\/socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass";
-    var protoUrl    = "tg://proxy?server=mtps1.telegram.doctor&port=443&secret=0a9ea08341d6772b4a122987ef042b86";
+    const protoUrl = "tg://proxy?server=mtps1.telegram.doctor&port=443&secret=0a9ea08341d6772b4a122987ef042b86";
+    const socksUrl = "tg://socks?server=s1.telegram.doctor&port=1080&user=telegramproxy&pass=telegrampass";
 
     setTimeout(function () {
-        window.location = protoUrlOld;
+        window.location = socksUrl;
     }, 1000);
 </script>
 
